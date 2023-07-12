@@ -1,21 +1,16 @@
 import StepDivider from "@/components/StepDivider";
 import Image from "next/image";
-import { Dispatch } from "react";
 import { Control, Controller, FieldErrors } from "react-hook-form";
 import { TextInput } from "@mantine/core";
-import { Action, Errors, Inputs, ActionTypes } from "@/types/index.d";
+import { Errors, Inputs } from "@/types/index.d";
 import { inputClass } from "@/styles/classes";
 
 const Contact = ({
   control,
   errors,
-  state,
-  dispatch,
 }: {
   control: Control<Inputs, any>;
   errors: FieldErrors<Inputs>;
-  state: Inputs;
-  dispatch: Dispatch<Action>;
 }) => {
   return (
     <>
@@ -45,14 +40,8 @@ const Contact = ({
                 <Image src="/name.svg" alt="name" width={50} height={50} />
               }
               {...field}
-              value={state.name}
               onChange={(e) => {
                 field.onChange(e.target.value);
-                dispatch({
-                  type: ActionTypes.SetValue,
-                  name: "name",
-                  value: e.target.value,
-                });
               }}
               error={errors.name?.message}
             />
@@ -81,14 +70,8 @@ const Contact = ({
                 <Image src="/email.svg" alt="email" width={50} height={50} />
               }
               {...field}
-              value={state.email}
               onChange={(e) => {
                 field.onChange(e.target.value);
-                dispatch({
-                  type: ActionTypes.SetValue,
-                  name: "email",
-                  value: e.target.value,
-                });
               }}
               error={errors.email?.message}
             />
@@ -124,14 +107,8 @@ const Contact = ({
                 <Image src="/phone.svg" alt="phone" width={50} height={50} />
               }
               {...field}
-              value={state.phone}
               onChange={(e) => {
                 field.onChange(e.target.value);
-                dispatch({
-                  type: ActionTypes.SetValue,
-                  name: "phone",
-                  value: e.target.value,
-                });
               }}
               error={errors.phone?.message}
             />
@@ -158,14 +135,8 @@ const Contact = ({
                 />
               }
               {...field}
-              value={state.company}
               onChange={(e) => {
                 field.onChange(e.target.value);
-                dispatch({
-                  type: ActionTypes.SetValue,
-                  name: "company",
-                  value: e.target.value,
-                });
               }}
               error={errors.company?.message}
             />

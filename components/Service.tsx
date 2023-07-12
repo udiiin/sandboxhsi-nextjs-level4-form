@@ -1,20 +1,11 @@
 import StepDivider from "@/components/StepDivider";
 import Image from "next/image";
-import { Dispatch } from "react";
 import { Control, Controller } from "react-hook-form";
 import { Radio } from "@mantine/core";
-import { Action, Inputs, Services, ActionTypes } from "@/types/index.d";
+import { Inputs, Services } from "@/types/index.d";
 import { serviceClass } from "@/styles/classes";
 
-const Service = ({
-  control,
-  state,
-  dispatch,
-}: {
-  control: Control<Inputs, any>;
-  state: Inputs;
-  dispatch: Dispatch<Action>;
-}) => {
+const Service = ({ control }: { control: Control<Inputs, any> }) => {
   return (
     <>
       <StepDivider />
@@ -37,14 +28,8 @@ const Service = ({
               root: serviceClass().classes["radiogroup-root"],
             }}
             {...field}
-            value={state.service}
             onChange={(val: Services) => {
               field.onChange(val);
-              dispatch({
-                type: ActionTypes.SetValue,
-                name: "service",
-                value: val,
-              });
             }}
           >
             <Radio

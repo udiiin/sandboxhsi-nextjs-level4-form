@@ -1,25 +1,10 @@
 import StepDivider from "@/components/StepDivider";
-import { Dispatch } from "react";
 import { Control, Controller } from "react-hook-form";
 import { Radio } from "@mantine/core";
-import {
-  Action,
-  Inputs,
-  Budgets,
-  BudgetValue,
-  ActionTypes,
-} from "@/types/index.d";
+import { Inputs, Budgets, BudgetValue } from "@/types/index.d";
 import { budgetClass } from "@/styles/classes";
 
-const Budget = ({
-  control,
-  state,
-  dispatch,
-}: {
-  control: Control<Inputs, any>;
-  state: Inputs;
-  dispatch: Dispatch<Action>;
-}) => {
+const Budget = ({ control }: { control: Control<Inputs, any> }) => {
   return (
     <>
       <StepDivider />
@@ -43,14 +28,8 @@ const Budget = ({
             }}
             size="md"
             {...field}
-            value={state.budget}
             onChange={(val: BudgetValue) => {
               field.onChange(val);
-              dispatch({
-                type: ActionTypes.SetValue,
-                name: "budget",
-                value: val,
-              });
             }}
           >
             <Radio
